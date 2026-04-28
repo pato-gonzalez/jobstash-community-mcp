@@ -1,0 +1,242 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-manifest/v1.json",
+  "name": "jobstash-mcp",
+  "displayName": "JobStash MCP",
+  "version": "0.1.0",
+  "description": "Community MCP server wrapping JobStash.xyz public crypto/web3 jobs API. Six tools, two resources, two prompts.",
+  "license": "MIT",
+  "homepage": "https://github.com/patster98/jobstash-community-mcp",
+  "repository": "https://github.com/patster98/jobstash-community-mcp",
+  "mcpSpecVersion": "2025-06-18",
+  "transports": {
+    "streamableHttp": {
+      "endpoint": "/api/mcp",
+      "demoUrl": "https://jobstash-mcp.vercel.app/api/mcp"
+    },
+    "stdio": {
+      "command": "npx",
+      "args": ["-y", "jobstash-mcp"]
+    }
+  },
+  "auth": {
+    "default": "none",
+    "supports": ["none", "bearer"],
+    "bearer": {
+      "envVar": "MCP_BEARER_TOKEN",
+      "description": "If set on the deployment, clients must send Authorization: Bearer <value>"
+    }
+  },
+  "deploy": {
+    "vercel": "https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpatster98%2Fjobstash-community-mcp",
+    "docker": {
+      "build": "docker build -t jobstash-mcp .",
+      "run": "docker run -p 3000:3000 jobstash-mcp"
+    }
+  },
+  "oneClickInstall": {
+    "addMcp": "npx -y add-mcp <DEPLOYMENT_URL>/api/mcp",
+    "claudeCodeHttp": "claude mcp add --transport http jobstash <DEPLOYMENT_URL>/api/mcp",
+    "claudeCodeStdio": "claude mcp add jobstash -- npx -y jobstash-mcp",
+    "codexCli": "codex mcp add jobstash --url <DEPLOYMENT_URL>/api/mcp"
+  },
+  "clientConfigs": {
+    "v0": {
+      "type": "ui",
+      "settingsPath": "Settings → MCP Connections → Add MCP → Custom server",
+      "fields": {
+        "url": "<DEPLOYMENT_URL>/api/mcp",
+        "auth": "No Auth"
+      }
+    },
+    "v0Api": {
+      "type": "code",
+      "language": "typescript",
+      "snippet": "const server = await v0.integrations.mcp.servers.create({ name: 'jobstash', url: '<DEPLOYMENT_URL>/api/mcp' });\nawait v0.chats.create({ message: '...', mcpServerIds: [server.id] });"
+    },
+    "claudeDesktop": {
+      "type": "file",
+      "path": "~/Library/Application Support/Claude/claude_desktop_config.json",
+      "config": {
+        "mcpServers": {
+          "jobstash": {
+            "command": "npx",
+            "args": ["-y", "jobstash-mcp"]
+          }
+        }
+      }
+    },
+    "claudeDesktopHttp": {
+      "type": "file",
+      "path": "~/Library/Application Support/Claude/claude_desktop_config.json",
+      "config": {
+        "mcpServers": {
+          "jobstash": {
+            "command": "npx",
+            "args": ["-y", "mcp-remote", "<DEPLOYMENT_URL>/api/mcp"]
+          }
+        }
+      }
+    },
+    "cursor": {
+      "type": "file",
+      "path": ".cursor/mcp.json",
+      "config": {
+        "mcpServers": {
+          "jobstash": {
+            "url": "<DEPLOYMENT_URL>/api/mcp"
+          }
+        }
+      }
+    },
+    "cursorStdio": {
+      "type": "file",
+      "path": ".cursor/mcp.json",
+      "config": {
+        "mcpServers": {
+          "jobstash": {
+            "command": "npx",
+            "args": ["-y", "jobstash-mcp"]
+          }
+        }
+      }
+    },
+    "continue": {
+      "type": "file",
+      "path": "~/.continue/config.json",
+      "config": {
+        "experimental": {
+          "modelContextProtocolServers": [
+            {
+              "transport": {
+                "type": "stdio",
+                "command": "npx",
+                "args": ["-y", "jobstash-mcp"]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "zed": {
+      "type": "file",
+      "path": "~/.config/zed/settings.json",
+      "config": {
+        "context_servers": {
+          "jobstash": {
+            "command": {
+              "path": "npx",
+              "args": ["-y", "jobstash-mcp"]
+            }
+          }
+        }
+      }
+    },
+    "windsurf": {
+      "type": "file",
+      "path": "~/.codeium/windsurf/mcp_config.json",
+      "config": {
+        "mcpServers": {
+          "jobstash": {
+            "serverUrl": "<DEPLOYMENT_URL>/api/mcp"
+          }
+        }
+      }
+    },
+    "vscodeCopilot": {
+      "type": "file",
+      "path": ".vscode/mcp.json",
+      "config": {
+        "servers": {
+          "jobstash": {
+            "type": "http",
+            "url": "<DEPLOYMENT_URL>/api/mcp"
+          }
+        }
+      }
+    },
+    "gemini": {
+      "type": "file",
+      "path": "~/.gemini/settings.json",
+      "config": {
+        "mcpServers": {
+          "jobstash": {
+            "command": "npx",
+            "args": ["-y", "mcp-remote", "<DEPLOYMENT_URL>/api/mcp"]
+          }
+        }
+      }
+    },
+    "chatgpt": {
+      "type": "ui",
+      "settingsPath": "Settings → Connectors → Create",
+      "requires": "ChatGPT Pro/Plus with Developer mode enabled",
+      "fields": {
+        "name": "JobStash",
+        "url": "<DEPLOYMENT_URL>/api/mcp",
+        "authentication": "None"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "search_jobs",
+      "summary": "Paginated, filterable crypto/web3 job search. ~30 filter params: tags, chains, seniority, salary range, TVL, audits, hacks, publicationDate window, etc.",
+      "primary": true
+    },
+    {
+      "name": "get_filter_catalog",
+      "summary": "Discover canonical filter values (tags, chains, locations, classifications, commitments, seniority). Call once per session before search_jobs."
+    },
+    {
+      "name": "get_recent_jobs",
+      "summary": "Time-windowed shortcut: today / this-week / this-month / past-2-weeks / past-3-months / past-6-months."
+    },
+    {
+      "name": "get_organization",
+      "summary": "Fetch a JobStash organization profile by normalizedName: headcount, funding, investors, ratings, socials, plus active job count."
+    },
+    {
+      "name": "compare_organizations",
+      "summary": "Side-by-side comparison of 2-5 orgs. Returns headcount, totalRaised, lastFundingRoundName, investorCount, aggregateRating, reviewCount, activeJobCount per org."
+    },
+    {
+      "name": "find_jobs_by_stack",
+      "summary": "Quick stack-keyword search ('find me Solidity jobs', 'Rust + Substrate')."
+    }
+  ],
+  "resources": [
+    { "uri": "jobstash://catalog/filters", "summary": "Full /public/jobs/filters JSON" },
+    {
+      "uri": "jobstash://organizations/{normalizedName}",
+      "summary": "Org payload (same shape as get_organization)"
+    }
+  ],
+  "prompts": [
+    {
+      "name": "find_my_next_crypto_job",
+      "summary": "Multi-step search wizard. Args: stack, seniority, locationPreference, salaryFloorUsd."
+    },
+    {
+      "name": "evaluate_organization",
+      "summary": "Org due-diligence wizard. Args: normalizedName. Returns red/green flags + score 1-10."
+    }
+  ],
+  "demoPrompts": [
+    "Find me senior Solidity jobs at audited DeFi protocols with TVL > $100M, sorted by salary descending.",
+    "Show jobs posted this week paying in tokens, remote-friendly, on Ethereum or Solana.",
+    "Compare these 3 orgs side-by-side: uniswap, lido, aave.",
+    "Evaluate the organization 'sardine' as a potential employer.",
+    "Find Rust + Substrate jobs at L1s with at least one funding round."
+  ],
+  "envVars": {
+    "JOBSTASH_API_BASE_URL": { "default": "https://middleware.jobstash.xyz", "required": false },
+    "JOBSTASH_API_TOKEN": { "default": "", "required": false, "purpose": "Optional bearer for paid endpoints" },
+    "JOBSTASH_CACHE_TTL_SECONDS": { "default": 300, "required": false },
+    "JOBSTASH_FILTERS_CACHE_TTL_SECONDS": { "default": 3600, "required": false },
+    "JOBSTASH_REQUEST_TIMEOUT_MS": { "default": 15000, "required": false },
+    "JOBSTASH_MAX_RETRIES": { "default": 3, "required": false },
+    "JOBSTASH_USER_AGENT": { "default": "jobstash-mcp/0.1.0", "required": false },
+    "LOG_LEVEL": { "default": "info", "required": false },
+    "MCP_BEARER_TOKEN": { "default": "", "required": false, "purpose": "Set to gate the deployed HTTP endpoint" }
+  }
+}

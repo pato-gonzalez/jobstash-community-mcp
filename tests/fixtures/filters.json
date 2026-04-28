@@ -1,0 +1,36 @@
+{
+  "tags": {
+    "kind": "MULTI_SELECT",
+    "position": 1,
+    "label": "Tags",
+    "show": true,
+    "paramKey": "tags",
+    "options": [
+      { "label": "Solidity", "value": "solidity" },
+      { "label": "Rust", "value": "rust" },
+      { "label": "TypeScript", "value": "typescript" }
+    ]
+  },
+  "chains": {
+    "kind": "MULTI_SELECT",
+    "position": 2,
+    "label": "Chains",
+    "show": true,
+    "paramKey": "chains",
+    "options": [
+      { "label": "Ethereum", "value": "ethereum" },
+      { "label": "Solana", "value": "solana" }
+    ]
+  },
+  "salary": {
+    "kind": "RANGE",
+    "position": 3,
+    "label": "Salary",
+    "show": true,
+    "prefix": "$",
+    "value": {
+      "lowest": { "value": 0, "paramKey": "minSalaryRange" },
+      "highest": { "value": 500000, "paramKey": "maxSalaryRange" }
+    }
+  }
+}
