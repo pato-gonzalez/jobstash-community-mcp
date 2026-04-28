@@ -12,7 +12,7 @@
        `<!-- mcp-config:CLIENT_NAME -->` so you can grep it.
     3. Replace the placeholder `<DEPLOYMENT_URL>` with EITHER:
          - the user's own Vercel deployment URL, OR
-         - the community demo URL `https://jobstash-mcp.vercel.app` if they don't
+         - the community demo URL `https://jobstash-community-mcp.vercel.app` if they don't
            have their own deploy yet.
     4. Apply the snippet (write the file / run the CLI command).
     5. Tell the user to restart their client and verify they see these tool names:
@@ -44,7 +44,7 @@
 The Vercel-maintained `add-mcp` tool auto-detects every MCP client installed on your machine and writes the correct config to each:
 
 ```bash
-npx -y add-mcp https://jobstash-mcp.vercel.app/api/mcp
+npx -y add-mcp https://jobstash-community-mcp.vercel.app/api/mcp
 ```
 
 That's it. Skip the rest if it worked. Otherwise pick your client below.
@@ -63,7 +63,7 @@ Pipe any of these to an AI agent (e.g. `curl <DEPLOYMENT_URL>/mcp.json | claude`
 
 ## Client configs (copy-paste)
 
-Replace `<DEPLOYMENT_URL>` with your own Vercel deployment URL or use the community demo `https://jobstash-mcp.vercel.app`.
+Replace `<DEPLOYMENT_URL>` with your own Vercel deployment URL or use the community demo `https://jobstash-community-mcp.vercel.app`.
 
 ### Vercel V0
 

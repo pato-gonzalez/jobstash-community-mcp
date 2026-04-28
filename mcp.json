@@ -11,7 +11,7 @@
   "transports": {
     "streamableHttp": {
       "endpoint": "/api/mcp",
-      "demoUrl": "https://jobstash-mcp.vercel.app/api/mcp"
+      "demoUrl": "https://jobstash-community-mcp.vercel.app/api/mcp"
     },
     "stdio": {
       "command": "npx",
