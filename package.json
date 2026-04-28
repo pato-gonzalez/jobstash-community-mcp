@@ -76,11 +76,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/patster98/jobstash-community-mcp.git"
+    "url": "git+https://github.com/pato-gonzalez/jobstash-community-mcp.git"
   },
-  "homepage": "https://github.com/patster98/jobstash-community-mcp",
+  "homepage": "https://github.com/pato-gonzalez/jobstash-community-mcp",
   "bugs": {
-    "url": "https://github.com/patster98/jobstash-community-mcp/issues"
+    "url": "https://github.com/pato-gonzalez/jobstash-community-mcp/issues"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

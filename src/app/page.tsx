@@ -66,7 +66,7 @@ export default function Home() {
       <p style={{ marginTop: 32, color: '#9aa0a6', fontSize: 14 }}>
         See the{' '}
         <a
-          href="https://github.com/patster98/jobstash-community-mcp"
+          href="https://github.com/pato-gonzalez/jobstash-community-mcp"
           style={{ color: '#7dd3fc' }}
         >
           README

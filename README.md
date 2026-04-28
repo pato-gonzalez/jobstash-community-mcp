@@ -29,11 +29,11 @@
 
 # jobstash-mcp
 
-[![CI](https://github.com/patster98/jobstash-community-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/patster98/jobstash-community-mcp/actions/workflows/ci.yml)
+[![CI](https://github.com/pato-gonzalez/jobstash-community-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/pato-gonzalez/jobstash-community-mcp/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-2025--06--18-purple)](https://modelcontextprotocol.io)
 [![Vercel V0](https://img.shields.io/badge/Vercel%20V0-compatible-black)](https://v0.app)
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpatster98%2Fjobstash-community-mcp)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpato-gonzalez%2Fjobstash-community-mcp)
 
 > **Community MCP server for [JobStash.xyz](https://jobstash.xyz)** — drop crypto/web3 job search into Vercel V0, Claude, Cursor, Continue, Zed, Windsurf, ChatGPT, Codex, Gemini in one paste. Not affiliated with JobStash.
 
@@ -308,7 +308,7 @@ Try this prompt once connected:
 
 ## Deploy your own
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpatster98%2Fjobstash-community-mcp)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpato-gonzalez%2Fjobstash-community-mcp)
 
 After deploy, your URL is `https://<your-project>.vercel.app/api/mcp`.
 
@@ -339,7 +339,7 @@ docker run -p 3000:3000 jobstash-mcp
 ## Local development
 
 ```bash
-git clone https://github.com/patster98/jobstash-community-mcp.git
+git clone https://github.com/pato-gonzalez/jobstash-community-mcp.git
 cd jobstash-community-mcp
 pnpm install
 cp .env.example .env

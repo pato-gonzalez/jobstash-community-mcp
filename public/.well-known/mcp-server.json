@@ -5,8 +5,8 @@
   "version": "0.1.0",
   "description": "Community MCP server wrapping JobStash.xyz public crypto/web3 jobs API. Six tools, two resources, two prompts.",
   "license": "MIT",
-  "homepage": "https://github.com/patster98/jobstash-community-mcp",
-  "repository": "https://github.com/patster98/jobstash-community-mcp",
+  "homepage": "https://github.com/pato-gonzalez/jobstash-community-mcp",
+  "repository": "https://github.com/pato-gonzalez/jobstash-community-mcp",
   "mcpSpecVersion": "2025-06-18",
   "transports": {
     "streamableHttp": {
@@ -27,7 +27,7 @@
     }
   },
   "deploy": {
-    "vercel": "https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpatster98%2Fjobstash-community-mcp",
+    "vercel": "https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpato-gonzalez%2Fjobstash-community-mcp",
     "docker": {
       "build": "docker build -t jobstash-mcp .",
       "run": "docker run -p 3000:3000 jobstash-mcp"
